@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Client</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script> -->
+     <script>
+        let clientIO = io()
+        clientIO.emit('hello', 'greetings from Pritesh')
+
+        clientIO.on('welcome', (message) => {
+            console.log(`Welcome: ${JSON.stringify(message)}`)
+        })
+
+        clientIO.on('new_message', (message) => {
+            console.log(message)
+        })
+
+        clientIO.emit('chat_message', `Message: ${new Date()}`)
+     </script>
+</head>
+<body>
+    <h1>Welcome to Socket Programming</h1>
+</body>
+</html>
